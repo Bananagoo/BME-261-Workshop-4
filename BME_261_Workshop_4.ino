@@ -16,8 +16,15 @@ void loop() {
   Serial.print("Light level: ");
   Serial.println(sensorValue);
 
-  int greenBrightness = map(sensorValue, 0, 1023, 0, 255);
-  setColor(0, 0, greenBrightness);
+  if (sensorValue < 400) {
+    setColor(200, 0, 0);  // Red for dark
+  } else if (sensorValue > 800) {
+    setColor(0, 0, 200);  // Green for bright
+  } else if (sensorValue >= 500 && sensorValue <= 600) {
+    setColor(0, 0, 0);    // OFF for moderate light
+  } else {
+    setColor(0, 200, 0);  // Blue for ambient
+  }
 
   delay(200);
 }
