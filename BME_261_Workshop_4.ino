@@ -16,17 +16,8 @@ void loop() {
   Serial.print("Light level: ");
   Serial.println(sensorValue);
 
-  // Adjust the thresholds to fit room/lighting conditions
-  if (sensorValue < 400) {
-    // DARK → Red
-    setColor(200, 0, 0);
-  } else if (sensorValue > 800) {
-    // BRIGHT → Green (for real circuit replace 200 with 50)
-    setColor(0, 0, 50);
-  } else {
-    // Ambient → Blue
-    setColor(0, 200, 0);
-  }
+  int greenBrightness = map(sensorValue, 0, 1023, 0, 255);
+  setColor(0, 0, greenBrightness);
 
   delay(200);
 }
