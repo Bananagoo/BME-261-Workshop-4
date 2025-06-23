@@ -16,9 +16,9 @@ void loop() {
   Serial.print("Light level: ");
   Serial.println(sensorValue);
 
-  if (sensorValue < 450) {
+  if (sensorValue < 425) {
     setColor(200, 0, 0);  // Red for dark
-  } else if (sensorValue > 800) {
+  } else if (sensorValue > 775) {
     setColor(0, 0, 200);  // Green for bright
   } else if (sensorValue >= 500 && sensorValue <= 600) {
     setColor(0, 0, 0);    // OFF for moderate light
